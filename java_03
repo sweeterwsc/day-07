@@ -1,0 +1,545 @@
+package src;
+import java.util.Random;
+import java.util.Scanner;
+
+//// ..递归....
+//public class Test{
+//	public static void main(String[] args) {
+//		T t1 = new T();
+//		System.out.println(t1.fibonacci(7));
+//		System.out.println(t1.peach(4));
+//	}
+//}
+//class T{
+	// .....方法1.....
+//	public void test(int n) {
+//		if(n>2) {
+//			test(n-1);
+//		}
+//		System.out.println("n = "+n);
+
+    // 2.阶乘
+//	public int factorial(int n) {
+//		 if(n == 1) {
+//			 return 1;
+//		 }else {
+//			 return factorial(n-1)*n;
+//		 }
+//	}
+	
+	//  3.求斐波那契数列
+//	public int fibonacci(int n) {
+//		if(n == 1 || n == 2) {
+//			return 1;
+//		}
+//		else {
+//			return fibonacci(n-1)+fibonacci(n-2);
+//		}
+//	}
+	
+//	//  4.猴子吃桃子  
+//	public int peach(int day) {
+//		if(day == 10) return 1;
+//		else return (peach(day+1)+1)*2;
+//	}
+//}	
+
+
+	//  5.老鼠出迷宫
+//public class Test{
+//	public static void main(String[] args) {
+//		int map[][]=new int[8][7];//迷宫  1表示可以走，0表示不能走
+//		for(int i=0;i<7;i++) {
+//			map[0][i]=1;
+//			map[7][i]=1;
+//		}
+//		for(int i=0;i<8;i++) {
+//			map[i][0]=1;
+//			map[i][6]=1;
+//		}
+//		map[3][1] = 1;
+//		map[3][2] = 1;
+//		T t1 = new T();
+//		t1.findway(map, 1, 1);
+//		System.out.println("=======当前地图情况=======");
+//		for(int i=0;i<map.length;i++) {
+//			for(int j=0;j<map[i].length;j++) {
+//				System.out.print(map[i][j]+" ");
+//			}
+//			System.out.println();
+//		}
+//	}
+//}
+//class T{
+//	/*
+//	 * findway方法找迷宫路径，如果找到，返回ture,否则返回false
+//	 * map表示地图
+//	 * 递归找路
+//	 * 规定map：0代表可以走，1代表障碍物,2代表走过(不往回走),3代表不能走
+//	 * 当map[6][5]=2时，表示找到
+//	 */
+//	public boolean findway(int map[][],int i,int j) {
+//		if(map[6][5] == 2) {// 已经找到
+//			return true;
+//		}else if(map[i][j] == 0) {
+//			map[i][j] = 2;
+//			if(findway(map,i-1,j)) {//  向shang走
+//				return true;
+//			}else if(findway(map,i,j+1)) {// 向you走 
+//				return true;
+//			}else if(findway(map,i+1,j)) {// 向xia走
+//				return true;
+//			}else if(findway(map,i,j-1)) {// 向左走
+//				return true;
+//			}else {
+//				map[i][j] = 3;
+//				return false;
+//			}
+//		}
+//		else return false;
+//	}
+//}
+
+////  汉诺塔.....
+//public class Test{
+//	public static void main(String[] args) {
+//		T t1 = new T();
+//		t1.moving(3, 'A', 'B','C');
+//	}
+//}
+//class T{              // 盘的数量       a柱             b柱           c柱  
+//	public void moving(int num,char a,char b,char c) {
+//		if(num == 1) {
+//			System.out.println(a+"->"+c);
+//		}
+//		else {
+//			// 如果多个盘，可以看成两个----> 最下面和上面所有盘
+//			// 先移动上面所有盘num-1个，到b  ，借助c
+//			moving(num-1,a,c,b);
+//			System.out.println(a+"->"+c);
+//			// 再把b柱的所有移动到c  ， 借助a
+//			moving(num-1,b,a,c);
+//		}
+//	}
+//}
+
+
+//// 八皇后
+//public class Test{
+//	public static void main(String[] args) {
+//		Scanner scanner = new Scanner(System.in);
+//		int arr[]= {0,4,7,5,2,6,1,3};
+//		T t1 = new T();
+//		int n = scanner.nextInt();
+//		t1.test(arr,n);
+//	}
+//}
+//class T{
+//	public void test(int arr[],int n) {
+//		int val;
+//		val = arr[n];                         
+//	}
+//}
+
+
+//// 方法的重载
+///*
+// * 方法名 必须相同
+// * 形参列表 必须不同（至少一个不同）
+// * 返回类型：无要求
+// */
+//public class Test{
+//	public static void main(String[] args) {
+//	T t1 = new T();
+//	t1.test(1, 2);
+//	t1.test(1.1, 2.5);
+//	}
+//}
+//class T{
+//	public int test(int m,int n) {
+//		return m+n;
+//	}
+//	public double test(double m,double n) {
+//		return m+n;
+//	}
+//}
+
+
+//// 可变参数
+//public class Test{
+//	public static void main(String[] args) {
+//		T t1 = new T();
+//		t1.sum(2,3,4,65);
+//      int[] arr = {1,2,3,4,5};  可变参数的实参可以为数组
+//      t1.sum(arr);
+//	}
+//}
+//class T{
+//	// 函数方法功能相同，参数个数不同
+//	public int sum(int... nums) {
+//		// 这里的nums相当于一个数组
+//		System.out.println("参数个数:"+nums.length);
+//		int res = 0;
+//		for(int i=0;i<nums.length;i++) {
+//			res += nums[i];
+//		}
+//		return res;
+//	}
+//   可变参数可以和普通类型一起，但可变的要放后面,  且只能有一个
+//  public int sum(String str,double... nums){
+//  }
+//}
+
+// 可变参数练习
+//public class Test{
+//	public static void main(String[] args) {
+//		T t1 = new T();
+//		t1.showScore("tom", 23,87,98,67);
+//	}
+//}
+//class T{
+//	public void showScore(String name,double... gread) {
+//		System.out.print(name+"  ");
+//		int res = 0;
+//		for(int i=0;i<gread.length;i++) {
+//			res += gread[i];
+//		}
+//		System.out.print(res);
+//	}
+//}
+
+/*
+ * 全局变量：类中定义的变量、在定义时可以先不赋值，有默认值
+ * 局部变量：一般指成员方法里面定义的变量、在定义时必须先赋值，无默认值  ：作用域为定义它的代码块中！
+ */
+
+/*
+ * 构造方法（有参、无参）
+ * this:指向当前对象的属性
+ */
+//class T{
+//	// 细节1
+//	public void f1() {
+//	}
+//	public void f2() {
+//		// 调用f1方法：
+//		f1();
+//		this.f1();
+//	}
+//	// 细节2:构造器
+//	public T() {
+//		this("jack",23);// 如果有this语句，必须放在第一行，必须在构造器中调用
+//		System.out.print(" 00");
+//	}
+//	public T(String name,int age) {
+//	}
+//	
+//}
+
+
+// 比较两个人是否是同一个
+//public class Test{
+//	public static void main(String[] args) {
+//	Person p1 = new Person("marry",23);
+//	Person p2 = new Person("tom",23);
+//	System.out.println(p1.compare(p2));
+//	}
+//}
+//class Person{
+//	String name;
+//	int age;
+//	// 构造器
+//	public Person(String name,int age) {
+//		this.name = name;
+//		this.age = age;
+//	}
+//	public boolean compare(Person p) {
+//		return (this.name.equals(p.name) && (this.age == p.age));
+//	}
+//}
+
+
+//public class Test{
+//public static void main(String[] args) {
+//	// A01
+//	A01 t1 = new A01();
+//	double[] b1 = {1.2,3.4,5.6,8.0,9.2};
+//	if(t1.max(b1) != null) {
+//		System.out.println(t1.max(b1));
+//	}
+//	else System.out.println("错误");
+	
+	// A02
+//	A02 t2 = new A02();
+//	String arr[] = {"jack","tom","wet","dehg"};
+//	System.out.println(t2.find(arr, "dehg"));
+	
+	// Book
+//	Book book1 = new Book();
+//	book1.updatePrice(76);
+//	System.out.println(book1.price);
+	
+	// A03
+//	A03 t3 = new A03();
+//	int arr[] = {2,5,46,23,75,687,89,56,0};
+//	int[] newArr = t3.copyArr(arr);
+//	for(int i=0;i<newArr.length;i++) {
+//		System.out.print(newArr[i]+" ");
+//	}
+	
+	// Circle
+//	Circle c1 = new Circle(1);
+//	System.out.println("面积="+c1.area());
+//	System.out.println("周长="+c1.len());
+	
+	// Cale
+//	Cale c1 = new Cale(2,0);
+//	System.out.println("和="+c1.Add());
+//	System.out.println("差="+c1.minus());
+//	System.out.println("积="+c1.mul());
+//	System.out.println("商="+c1.div());
+	
+	// Dog
+//	Dog d1 = new Dog("小花","白色",5);
+//	d1.show();
+	
+	// 13
+//	Circle C = new Circle();
+//	PassObject p1 = new PassObject();
+//	p1.printAreas(C,4);
+//	
+//	}
+//}
+// 作业1：编写类A01,定义方法 max ,实现求某个 double 数组的最大值,并返回
+//class A01{
+//	public Double max(double[] arr) {
+//		if(arr != null && arr.length > 0) {
+//		double max = arr[0];
+//		for(int i=1;i<arr.length;i++) {
+//			if(max < arr[i]) {max = arr[i];}
+//			}
+//		return max;
+//		}
+//		else {return null;}
+//}
+//2.编写类A02,定义方法 find ,实现查找某字符串是否在数组中,并返回索引,如果找不到,返回—1
+//class A02{
+//	public int find(String arr[],String str) {
+//		for(int i=0;i<arr.length;i++) {
+//			if(arr[i].equals(str)) {
+//				return i;
+//			}
+//		}
+//		return -1;
+//	} 
+//}
+//3.编写类 Book ,定义方法 updatePrice ,实现更改某本书的价格,具体:如果价格>150.则更改为150,如果价格>100.更改为100.否则不变
+//class Book{
+//	double price;
+//	public void updatePrice(double price) {
+//		if(price > 150) {
+//			this.price = 150;
+//		}else if(price > 100) {
+//			this.price = 100;
+//		}
+//		else this.price = price;
+//	}
+//}
+//4.编写类A03,"实现数组的复制功能 copyArr ,输入旧数组,返回一个新数组,元素和旧数组一样
+//class A03{
+//	public int[] copyArr(int[] arr) {
+//		int copy[] = new int[arr.length];
+//		for(int i=0;i<arr.length;i++) {
+//			copy[i] = arr[i];
+//		}
+//		return copy;
+//	}
+//}
+//5.定义一个圆类 Circle ,定义属性:半径,提供显示圆周长功能的方法,提供显示圆面积的方法
+//class Circle{
+//	double radius;
+//	public Circle(double radius) {
+//		this.radius = radius;
+//	}
+//	public double area() {
+//		return Math.PI*this.radius*this.radius;
+//	}
+//	public double len() {
+//		return Math.PI*this.radius*2;
+//	}
+//}
+//6.编程创建一个 Cale 计算类,在其中定义2个变量表示两个操作数,定义四个方法实现求和、差、乘、商要求除数为0的话,要提示)并创建两个对象,分别测试
+//class  Cale{
+//	double num1;
+//	double num2;
+//	public Cale(double num1,double num2){
+//		this.num1 = num1;
+//		this.num2 = num2;
+//	}
+//	public double Add() {
+//		return num1 + num2;
+//	}
+//	public double minus() {
+//		return num1 - num2;
+//	}
+//	public double mul() {
+//		return num1 * num2;
+//	}
+//	public Double div() {
+//		if(num2 == 0) {
+//			System.out.println("错误，除数为0");
+//			return null;
+//		}else return num1 / num2;
+//	}
+//}
+
+// 7.设计一个Dog类，有名字，颜色，年龄属性，定义输出方法show()显示其信息
+//class Dog{
+//	String name;
+//	String color;
+//	int age;
+//	public Dog(String name,String color,int age) {
+//		this.name = name;
+//		this.color = color;
+//		this.age = age;
+//	}
+//	public void show() {
+//		System.out.println("name="+this.name+"   color="+this.color+"   age="+this.age);
+//	}
+//}
+
+// 8.下列输出结果是：
+//public class Test{
+//	int count = 9;
+//	public void count1() {
+//		count = 10;
+//		System.out.println("count1=" + count);
+//	}
+//	public void count2() {
+//		System.out.println("count1=" + count++);
+//	}
+//	public static void main(String[] args) {
+//	new Test().count1();// count1 = 10   new Test()为匿名对象，只能用一次，就会被销毁
+//	Test t1 = new Test();
+//	t1.count2();// count1 = 9
+//	t1.count2();// count1 = 10
+//	}
+//}
+
+//// 10.下列输出结果是：
+//class Demo{
+//	int i=100;
+//	public void m() {
+//		int j = i++;
+//		System.out.println("i="+i);
+//		System.out.println("j="+j);
+//	}
+//}
+//public class Test{
+//	public static void main(String[] args) {
+//		Demo d1 = new Demo();
+//		Demo d2 = d1;
+//		d2.m();// i = 101,j = 100
+//		System.out.println(d1.i);// 101
+//		System.out.println(d2.i);// 101
+//	}
+//}
+
+// 11.在测试方法中,调用 method 方法,代码如下,编译正确,试写出 method 方法的定义形式,
+//调用语句为: System . out . printin ( method ( method (10.0,20.0),100))
+//public double method(double d1,double d2) {}
+
+//12.创建一个 Employee 类,属性有(名字,性别,年龄,职位,薪水),提供3个构造方法,可以初始化(1)(名字,性别,年龄,职位,薪水),(2)(名字,性别,年龄)(3)(职位,薪水)
+//要求  充分  复用构造器
+//class Employee{
+//	String name;
+//	String sex;
+//	int age;
+//	String job;
+//	double salary;
+//	public Employee(String job,double salary) {
+//		this.job = job;
+//		this.salary = salary;
+//	}
+//	public Employee(String name,String sex,int age) {
+//		this.name = name;
+//		this.sex = sex;
+//		this.age = age;
+//	}
+//	public Employee(String name,String sex,int age,String job,double salary){
+//		this(name,sex,age);
+//		this.job = job;
+//		this.salary = salary;
+//	}
+//}
+
+//// 13.将对象作为参数传递给方法.题目要求:(1)定义一个 Circle 类,包含一个 double 型的 radius 属性代表圆的半径, findArea ()方法返回圆的面积.
+//class Circle{
+//	double radius;
+//	public Circle() {
+//	}
+//	public Circle(double radius) {
+//		this.radius = radius;
+//	}
+//	public double findArea() {
+//		return Math.PI*radius*radius;
+//	}
+//	// 添加方法，修改对象的半径值
+//	public void setRadius(double radius) {
+//		this.radius = radius;
+//	}
+//}
+////(2)定义一个类 PassObject ,在类中定义一个方法printAreas0),该方法的定义如下: public void printAreas ( Circle C , int times ) //方法签名
+//class PassObject{
+//	public void printAreas(Circle C,int times) {
+////(3)在 printAreas 方法中打印输出1到 times 之间的每个整数半径值,以及对应的面积.例如, times 为5,则输出半径1,2,3,4,5,以及对应的圆面积。
+//		for(int i = 1;i <= times;i++) {
+//			System.out.println("半径为："+i+" ");
+//			C.setRadius(i);
+//			System.out.println("面积为："+ C.findArea());
+//		}
+//	}
+//}
+////(4)在 main 方法中调用 printAreas
+
+//  14.有个人Tom设计他的成员变量，成员方法，可以电脑猜拳，电脑每次生成0,1,2
+// 0表示石头，1表示剪刀，2表示布，并要显示Tom的输赢次数
+//public class Test{
+//	public static void main(String[] args) {
+//		Tom t = new Tom();
+//		t.play(2);
+//		System.out.println("win:"+t.win_counts);
+//		System.out.println("fail:"+t.defeate_counts);
+//	}
+//}
+//class Tom{
+//	Scanner scanner = new Scanner(System.in);
+//	Random r = new Random();
+//	int player;
+//	int computer;
+//	int win_counts;
+//	int defeate_counts;
+//	public void play(int n) {
+//		for(int i=0;i<n;i++) {
+//			System.out.println("请玩家出拳");
+//			player = scanner.nextInt();
+//			System.out.println("请电脑出拳");
+//			computer = r.nextInt(3);
+//			System.out.println("双方出拳结果为："+"玩家："+player+"  电脑："+computer);
+//			switch(player) {
+//			case 0:{
+//				if(computer == 1) this.win_counts++;
+//				else if(computer == 2) this.defeate_counts++;
+//				break;}
+//			case 1:	{
+//				if(computer == 2) this.win_counts++;
+//				else if(computer == 0) this.defeate_counts++;
+//				break;}
+//			case 2:{
+//				if(computer == 0) this.win_counts++;
+//				else if(computer == 1) this.defeate_counts++;
+//				break;}
+//			}
+//		}
+//	}
+//}
